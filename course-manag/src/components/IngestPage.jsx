@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_ENDPOINTS } from '../config/api';
 
 function IngestPage() {
   const [token, setToken] = useState('');
@@ -43,7 +44,7 @@ function IngestPage() {
 
       console.log('🔐 Uploading CSV with token...');
       
-      const response = await fetch('http://localhost:3000/api/ingest', {
+      const response = await fetch(API_ENDPOINTS.INGEST, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token.trim()}`

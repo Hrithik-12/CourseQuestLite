@@ -457,6 +457,26 @@ cd course-manag && npm run build
 npm start
 ```
 
+## 🚀 Deployment
+
+This project is configured for deployment on Vercel with separate frontend and backend services.
+
+**Quick Deployment**: See [DEPLOYMENT.md](DEPLOYMENT.md) for complete step-by-step Vercel deployment guide.
+
+### Configuration Files
+- **Backend**: `/vercel.json` - Serverless function configuration
+- **Frontend**: `/course-manag/vercel.json` - Vite build configuration
+
+### Environment Variables
+- **Backend**: Requires `DATABASE_URL` and `NODE_ENV`
+- **Frontend**: Requires `VITE_API_BASE_URL` pointing to backend
+
+### Architecture
+```
+Frontend (Vite/React) ──→ Backend (Node.js/Express) ──→ Database (PostgreSQL)
+     Vercel Static           Vercel Serverless          External Provider
+```
+
 ## 🤝 Contributing
 
 1. Fork the repository

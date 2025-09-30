@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 function AskAIPage() {
   const [question, setQuestion] = useState('');
@@ -28,14 +28,25 @@ function AskAIPage() {
 
     try {
       console.log('🤖 Asking AI:', question);
-      const response = await axios.post('http://localhost:3000/api/ask', {
-        question: question.trim()
+      const response = await fetch(API_ENDPOINTS.ASK, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          question: question.trim()
+        })
       });
       
-      setResult(response.data);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      setResult(data);
     } catch (error) {
       console.error('❌ Ask AI error:', error);
-      setError(error.response?.data?.message || 'Error processing your question');
+      setError(error.message || 'Error processing your question');
     } finally {
       setLoading(false);
     }

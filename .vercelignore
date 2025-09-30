@@ -1,0 +1,13 @@
+# Vercel ignore file for backend
+node_modules
+.env
+.env.local
+coverage/
+tests/
+*.test.js
+*.log
+.DS_Store
+uploads/
+course-manag/
+README.md
+jest.config.json

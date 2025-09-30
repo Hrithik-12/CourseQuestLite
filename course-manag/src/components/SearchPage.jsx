@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { API_ENDPOINTS } from "../config/api";
 
 function SearchPage({ addToCompare, compareList }) {
   const [courses, setCourses] = useState([]);
@@ -25,11 +25,17 @@ function SearchPage({ addToCompare, compareList }) {
         if (value) params.append(key, value);
       });
 
-      const response = await axios.get(
-        `http://localhost:3000/api/courses?${params}`
+      const response = await fetch(
+        `${API_ENDPOINTS.COURSES}?${params}`
       );
-      setCourses(response.data.data);
-      setPagination(response.data.pagination);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      setCourses(data.data);
+      setPagination(data.pagination);
     } catch (error) {
       console.error("Error fetching courses:", error);
       alert("Error fetching courses. Make sure the API server is running.");
