@@ -21,8 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? [
-        'https://your-frontend.vercel.app', // Replace with your actual frontend URL
-        'https://coursequest-frontend.vercel.app' // Example name
+        'https://course-quest-lite-3k2r.vercel.app', // Your actual Vercel frontend URL
+        'https://coursequest-frontend.vercel.app' // Backup/alternative URL
       ]
     : ['http://localhost:5173', 'http://localhost:3000'], // Development
   credentials: true,
