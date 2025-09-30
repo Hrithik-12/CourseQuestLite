@@ -48,7 +48,19 @@ async function parseNaturalLanguageQuery(question) {
   
   
   // ========================================
-  // 3. FEE FILTERING (Numeric Comparison)
+  // 3. RATING FILTERING (Parse first to avoid conflicts with fee parsing)
+  // ========================================
+  // WHY: More specific pattern that includes "rating" keyword
+  const ratingMatch = lower.match(/rating\s*(?:above|over|greater than|more than|is|of)?\s*(\d+(?:\.\d+)?)/);
+  if (ratingMatch) {
+    const minRating = parseFloat(ratingMatch[1]);
+    filters.rating = { gte: minRating };
+    detectedConditions.push(`Rating: ≥ ${minRating}⭐`);
+  }
+  
+  
+  // ========================================
+  // 4. FEE FILTERING (Numeric Comparison)
   // ========================================
   // WHY: Regex to extract numbers - finds digits even in "50,000" or "50000"
   // Pattern: Look for "under/below/less" + number
@@ -60,25 +72,26 @@ async function parseNaturalLanguageQuery(question) {
     detectedConditions.push(`Fee: ≤ ₹${feeLimit.toLocaleString()}`);
   }
   
-  // Pattern: Look for "above/over/more" + number
-  const feeAboveMatch = lower.match(/(?:above|over|more than|greater than|min|minimum)\s*(\d+(?:,\d+)?)/);
-  if (feeAboveMatch) {
+  // Pattern: Look for "above/over/more than" + number, but exclude rating context
+  const feeAbovePattern = /(?:above|over|more than|greater than|min|minimum)\s*(\d+(?:,\d+)?)/g;
+  let feeAboveMatch;
+  while ((feeAboveMatch = feeAbovePattern.exec(lower)) !== null) {
+    // Check if this match is NOT part of a rating expression
+    const matchStart = feeAboveMatch.index;
+    const beforeMatch = lower.substring(Math.max(0, matchStart - 10), matchStart);
+    
+    // Skip if this is a rating expression
+    if (beforeMatch.includes('rating')) {
+      continue;
+    }
+    
     const feeMin = parseInt(feeAboveMatch[1].replace(/,/g, ''));
-    filters.tuitionFee = { gte: feeMin }; // gte = Greater Than or Equal
-    detectedConditions.push(`Fee: ≥ ₹${feeMin.toLocaleString()}`);
-  }
-  
-  
-  // ========================================
-  // 4. RATING FILTERING
-  // ========================================
-  // WHY: Similar to fee, but expects decimal (4.5 not 4500)
-  // WHY: Regex allows "rating above 4" or "rating 4+" or "4 stars"
-  const ratingMatch = lower.match(/rating\s*(?:above|over|greater than|more than)?\s*(\d+(?:\.\d+)?)/);
-  if (ratingMatch) {
-    const minRating = parseFloat(ratingMatch[1]);
-    filters.rating = { gte: minRating };
-    detectedConditions.push(`Rating: ≥ ${minRating}⭐`);
+    // Only process if this looks like a fee (large number)
+    if (feeMin >= 1000) {
+      filters.tuitionFee = { gte: feeMin }; // gte = Greater Than or Equal
+      detectedConditions.push(`Fee: ≥ ₹${feeMin.toLocaleString()}`);
+      break;
+    }
   }
   
   
