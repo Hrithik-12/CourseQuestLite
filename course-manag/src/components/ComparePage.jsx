@@ -254,7 +254,9 @@ function ComparePage({ compareList, removeFromCompare }) {
           <div className="flex justify-between items-center">
             <button
               onClick={() => {
-                compareList.forEach(course => removeFromCompare(course.id));
+                // Create a copy of course IDs to avoid mutation during iteration
+                const courseIds = compareList.map(course => course.id);
+                courseIds.forEach(courseId => removeFromCompare(courseId));
               }}
               className="px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors"
             >
