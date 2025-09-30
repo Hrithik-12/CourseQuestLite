@@ -7,3 +7,10 @@ build/
 *.log
 .DS_Store
 /generated/prisma
+
+# Test coverage reports
+coverage/
+*.lcov
+
+# Jest cache
+.jest-cache/

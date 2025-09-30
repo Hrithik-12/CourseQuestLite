@@ -237,6 +237,65 @@ csvFile: [CSV file]
 
 ## 🧪 Testing
 
+### Automated Testing Suite
+
+The project includes comprehensive automated tests covering all major functionality.
+
+#### **Install Test Dependencies**
+```bash
+npm install --save-dev jest supertest nodemon
+```
+
+#### **Available Test Scripts**
+```bash
+npm test                    # Run all tests
+npm run test:watch         # Run tests in watch mode
+npm run test:coverage      # Generate coverage report
+```
+
+#### **Test Coverage**
+- ✅ **Natural Language Parsing** (13 tests)
+  - Level detection (UG/PG)
+  - Department parsing (full names and aliases)
+  - Fee range parsing (under/above)
+  - Delivery mode detection
+  - Rating requirements
+  - Complex multi-filter queries
+  - Case insensitive matching
+
+- ✅ **API Endpoints** (13 tests)
+  - Course listing with pagination
+  - Filtering by department, level, fee, rating
+  - Search functionality
+  - Course comparison
+  - Natural language search endpoint
+  - Error handling
+
+- ✅ **CSV Validation** (10 tests)
+  - Required field validation
+  - Data type validation
+  - Enum value validation (level, delivery_mode)
+  - Range validation (rating, year, fee)
+  - Batch validation of multiple rows
+
+#### **Example Test Output**
+```
+ PASS  tests/parsing.test.js
+ PASS  tests/endpoints.test.js
+ PASS  tests/csvValidation.test.js
+
+Test Suites: 3 passed, 3 total
+Tests:       36 passed, 36 total
+Time:        0.278s
+```
+
+#### **Running Specific Tests**
+```bash
+npx jest tests/parsing.test.js      # Natural language parsing
+npx jest tests/endpoints.test.js    # API endpoints
+npx jest tests/csvValidation.test.js # CSV validation
+```
+
 ### Manual API Testing
 
 #### 1. Test Course Search
@@ -324,16 +383,42 @@ CourseQuestLite/
 │       └── diagram.png      # System architecture diagram
 ├── data/
 │   └── courses.csv          # Sample data
+├── tests/                   # Automated test suite
+│   ├── parsing.test.js      # Natural language parsing tests
+│   ├── endpoints.test.js    # API endpoint tests
+│   ├── csvValidation.test.js # CSV validation tests
+│   └── README.md           # Test documentation
 └── uploads/                 # Temporary file uploads
 ```
 
 ### Available Scripts
 ```bash
-npm start          # Start production server
-npm run dev        # Start development server with nodemon
-npm run import     # Import sample CSV data
-npx prisma studio  # Open Prisma database browser
-npx prisma migrate dev  # Create new migration
+npm start              # Start production server
+npm run dev            # Start development server with nodemon
+npm test               # Run automated test suite
+npm run test:watch     # Run tests in watch mode
+npm run test:coverage  # Generate test coverage report
+npm run import         # Import sample CSV data
+npx prisma studio      # Open Prisma database browser
+npx prisma migrate dev # Create new migration
+```
+
+### Development Workflow
+```bash
+# 1. Setup environment
+cp .env.example .env
+npm install
+
+# 2. Setup database
+npx prisma generate
+npx prisma migrate dev
+
+# 3. Run tests
+npm test
+
+# 4. Start development
+npm run dev        # Backend (port 3000)
+cd course-manag && npm run dev  # Frontend (port 5173)
 ```
 
 ## 🔒 Security
