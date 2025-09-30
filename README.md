@@ -2,6 +2,13 @@
 
 A comprehensive course management system with advanced search capabilities, AI-powered query processing, and intuitive course comparison features.
 
+## 🚀 Live Demo
+
+🌐 **Frontend**: [https://course-quest-lite-3k2r.vercel.app/](https://course-quest-lite-3k2r.vercel.app/)  
+🔗 **Backend API**: [https://coursequestlite.onrender.com](https://coursequestlite.onrender.com)
+
+> **Note**: The backend is hosted on Render's free tier, which may take up to 50 seconds to wake up after periods of inactivity. Please be patient on the first request.
+
 ## 🏗️ System Architecture
 
 ![System Architecture](./course-manag/public/diagram.png)
@@ -459,23 +466,23 @@ npm start
 
 ## 🚀 Deployment
 
-This project is configured for deployment on Vercel with separate frontend and backend services.
+**Current Deployment**:
+- **Frontend**: Deployed on Vercel → [https://course-quest-lite-3k2r.vercel.app/](https://course-quest-lite-3k2r.vercel.app/)
+- **Backend**: Deployed on Render → [https://coursequestlite.onrender.com](https://coursequestlite.onrender.com)
 
-**Quick Deployment**: See [DEPLOYMENT.md](DEPLOYMENT.md) for complete step-by-step Vercel deployment guide.
+> **⚠️ Render Free Tier Notice**: The backend uses Render's free tier, which automatically spins down after 15 minutes of inactivity. The first request after downtime may take up to 50 seconds to respond as the service wakes up.
 
-### Configuration Files
-- **Backend**: `/vercel.json` - Serverless function configuration
-- **Frontend**: `/course-manag/vercel.json` - Vite build configuration
-
-### Environment Variables
-- **Backend**: Requires `DATABASE_URL` and `NODE_ENV`
-- **Frontend**: Requires `VITE_API_BASE_URL` pointing to backend
+**Deployment Guide**: See [DEPLOYMENT.md](DEPLOYMENT.md) for complete step-by-step deployment instructions.
 
 ### Architecture
 ```
 Frontend (Vite/React) ──→ Backend (Node.js/Express) ──→ Database (PostgreSQL)
-     Vercel Static           Vercel Serverless          External Provider
+     Vercel Static           Render Free Tier          Render PostgreSQL
 ```
+
+### Configuration Files
+- **Frontend**: `/course-manag/vercel.json` - Vite build configuration
+- **Environment**: Frontend requires `VITE_API_BASE_URL` pointing to Render backend
 
 ## 🤝 Contributing
 
@@ -506,6 +513,8 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 | POST | `/api/import/csv` | No | Public CSV import |
 | GET | `/health` | No | Health check |
 
-**Base URL**: `http://localhost:3000`
+**Base URLs**:
+- **Production**: `https://coursequestlite.onrender.com`
+- **Development**: `http://localhost:3000`
 
 **Authentication**: Include `Authorization: Bearer <token>` header for protected endpoints.
