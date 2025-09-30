@@ -19,15 +19,17 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configure CORS for production
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? [
-        'https://course-quest-lite-3k2r.vercel.app', // Your actual Vercel frontend URL
-        'https://coursequest-frontend.vercel.app' // Backup/alternative URL
-      ]
-    : ['http://localhost:5173', 'http://localhost:3000'], // Development
+  origin: [
+    'http://localhost:5173', // Local development frontend
+    'http://localhost:3000', // Local development alternative
+    'https://course-quest-lite-3k2r.vercel.app', // Production Vercel frontend
+    'https://coursequest-frontend.vercel.app' // Backup/alternative URL
+  ],
   credentials: true,
   optionsSuccessStatus: 200
 };
+
+console.log('🔧 CORS Origins configured:', corsOptions.origin);
 app.use(cors(corsOptions));
 
 // Configure multer for file uploads
