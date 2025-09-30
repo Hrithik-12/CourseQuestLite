@@ -1,0 +1,71 @@
+course_id,course_name,department,level,delivery_mode,credits,duration_weeks,rating,tuition_fee_inr,year_offered
+CS101,Introduction to Programming,Computer Science,UG,online,4,12,4.5,45000,2024
+CS102,Data Structures and Algorithms,Computer Science,UG,offline,4,14,4.7,50000,2024
+CS103,Database Management Systems,Computer Science,UG,hybrid,3,12,4.3,48000,2024
+CS201,Machine Learning Fundamentals,Computer Science,PG,online,4,16,4.8,75000,2024
+CS202,Advanced Algorithms,Computer Science,PG,offline,4,14,4.6,70000,2024
+CS203,Cloud Computing,Computer Science,PG,hybrid,3,10,4.4,65000,2025
+CS104,Web Development,Computer Science,UG,online,3,10,4.2,42000,2024
+CS105,Mobile App Development,Computer Science,UG,hybrid,4,12,4.5,47000,2025
+EE101,Circuit Theory,Electrical Engineering,UG,offline,4,14,4.1,48000,2024
+EE102,Digital Electronics,Electrical Engineering,UG,offline,3,12,4.3,46000,2024
+EE103,Signals and Systems,Electrical Engineering,UG,hybrid,4,14,4.4,49000,2024
+EE201,Power Systems,Electrical Engineering,PG,offline,4,16,4.5,72000,2024
+EE202,Control Systems,Electrical Engineering,PG,hybrid,3,12,4.2,68000,2025
+EE203,VLSI Design,Electrical Engineering,PG,online,4,14,4.6,70000,2025
+ME101,Engineering Mechanics,Mechanical Engineering,UG,offline,4,12,4.0,45000,2024
+ME102,Thermodynamics,Mechanical Engineering,UG,offline,4,14,4.2,47000,2024
+ME103,Fluid Mechanics,Mechanical Engineering,UG,hybrid,3,12,4.1,46000,2024
+ME201,Robotics,Mechanical Engineering,PG,hybrid,4,16,4.7,75000,2024
+ME202,Advanced Manufacturing,Mechanical Engineering,PG,offline,3,14,4.3,68000,2025
+ME203,Computational Mechanics,Mechanical Engineering,PG,online,4,12,4.5,70000,2025
+BA101,Principles of Management,Business Administration,UG,online,3,10,4.4,40000,2024
+BA102,Financial Accounting,Business Administration,UG,hybrid,3,12,4.2,42000,2024
+BA103,Marketing Management,Business Administration,UG,online,3,10,4.3,41000,2024
+BA201,Strategic Management,Business Administration,PG,hybrid,4,14,4.6,80000,2024
+BA202,Corporate Finance,Business Administration,PG,online,4,12,4.5,78000,2024
+BA203,Business Analytics,Business Administration,PG,hybrid,3,10,4.7,82000,2025
+BA104,Operations Management,Business Administration,UG,offline,3,12,4.1,43000,2024
+EC101,Microeconomics,Economics,UG,online,3,12,4.3,38000,2024
+EC102,Macroeconomics,Economics,UG,online,3,12,4.2,38000,2024
+EC103,Econometrics,Economics,UG,hybrid,4,14,4.4,42000,2024
+EC201,Advanced Econometrics,Economics,PG,hybrid,4,16,4.6,65000,2024
+EC202,Development Economics,Economics,PG,online,3,12,4.3,62000,2025
+EC203,International Trade,Economics,PG,hybrid,3,10,4.5,64000,2025
+PH101,Classical Mechanics,Physics,UG,offline,4,14,4.2,46000,2024
+PH102,Quantum Mechanics,Physics,UG,offline,4,16,4.5,48000,2024
+PH103,Electromagnetism,Physics,UG,hybrid,3,12,4.3,45000,2024
+PH201,Particle Physics,Physics,PG,offline,4,16,4.7,70000,2024
+PH202,Condensed Matter Physics,Physics,PG,hybrid,4,14,4.4,68000,2025
+CH101,Organic Chemistry,Chemistry,UG,offline,4,14,4.1,44000,2024
+CH102,Inorganic Chemistry,Chemistry,UG,offline,3,12,4.0,42000,2024
+CH103,Physical Chemistry,Chemistry,UG,hybrid,4,14,4.2,45000,2024
+CH201,Advanced Organic Chemistry,Chemistry,PG,offline,4,16,4.5,66000,2024
+CH202,Analytical Chemistry,Chemistry,PG,hybrid,3,12,4.3,64000,2025
+DA101,Introduction to Data Science,Data Analytics,UG,online,4,12,4.6,50000,2024
+DA102,Statistical Methods,Data Analytics,UG,online,3,10,4.4,46000,2024
+DA103,Data Visualization,Data Analytics,UG,hybrid,3,10,4.5,47000,2024
+DA201,Big Data Analytics,Data Analytics,PG,online,4,14,4.8,85000,2024
+DA202,Deep Learning,Data Analytics,PG,hybrid,4,16,4.9,90000,2024
+DA203,Natural Language Processing,Data Analytics,PG,online,3,12,4.7,82000,2025
+CS106,Software Engineering,Computer Science,UG,hybrid,4,14,4.4,49000,2024
+CS107,Operating Systems,Computer Science,UG,offline,4,14,4.3,48000,2024
+CS204,Computer Vision,Computer Science,PG,online,4,14,4.7,78000,2025
+EE104,Embedded Systems,Electrical Engineering,UG,hybrid,3,12,4.2,47000,2024
+EE204,Renewable Energy Systems,Electrical Engineering,PG,online,3,12,4.4,69000,2025
+ME104,CAD/CAM,Mechanical Engineering,UG,hybrid,3,10,4.0,44000,2024
+ME204,Finite Element Analysis,Mechanical Engineering,PG,online,4,14,4.6,72000,2025
+BA105,Human Resource Management,Business Administration,UG,online,3,10,4.2,40000,2024
+BA204,Supply Chain Management,Business Administration,PG,hybrid,3,12,4.5,79000,2025
+EC104,Money and Banking,Economics,UG,online,3,12,4.1,39000,2024
+EC204,Behavioral Economics,Economics,PG,hybrid,3,10,4.6,63000,2025
+PH104,Thermodynamics and Statistical Mechanics,Physics,UG,offline,4,14,4.3,47000,2024
+PH203,Astrophysics,Physics,PG,hybrid,4,16,4.8,72000,2025
+CH104,Biochemistry,Chemistry,UG,hybrid,4,14,4.3,46000,2024
+CH203,Medicinal Chemistry,Chemistry,PG,offline,4,16,4.6,68000,2025
+DA104,Python for Data Science,Data Analytics,UG,online,3,10,4.5,45000,2024
+DA205,Machine Learning Operations,Data Analytics,PG,hybrid,3,12,4.7,83000,2025
+CS108,Computer Networks,Computer Science,UG,offline,3,12,4.2,46000,2024
+CS205,Distributed Systems,Computer Science,PG,hybrid,4,16,4.8,80000,2025
+BA106,Business Communication,Business Administration,UG,online,2,8,4.0,35000,2024
+ME105,Heat Transfer,Mechanical Engineering,UG,offline,3,12,4.1,45000,2024

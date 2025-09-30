@@ -1,0 +1,61 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Master data table - departments rarely change
+model Department {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique @db.VarChar(100)
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  courses   Course[]
+  
+  @@map("departments")
+}
+
+// Main courses table with all attributes
+model Course {
+  id            String       @id @db.VarChar(20) @map("course_id")
+  name          String       @db.VarChar(255) @map("course_name")
+  departmentId  Int          @map("department_id")
+  level         Level
+  deliveryMode  DeliveryMode @map("delivery_mode")
+  credits       Int          @db.SmallInt
+  durationWeeks Int          @map("duration_weeks") @db.SmallInt
+  rating        Decimal      @db.Decimal(2, 1)
+  tuitionFee    Decimal      @map("tuition_fee_inr") @db.Decimal(10, 2)
+  yearOffered   Int          @map("year_offered") @db.SmallInt
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+  
+  // Relationship
+  department    Department   @relation(fields: [departmentId], references: [id])
+  
+  // Indexes for search/filter performance
+  @@index([departmentId])
+  @@index([level])
+  @@index([tuitionFee])
+  @@index([rating])
+  @@index([deliveryMode])
+  
+  @@map("courses")
+}
+
+// Enums for type safety
+enum Level {
+  UG
+  PG
+}
+
+enum DeliveryMode {
+  online
+  offline
+  hybrid
+}
