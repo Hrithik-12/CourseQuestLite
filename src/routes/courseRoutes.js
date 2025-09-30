@@ -7,32 +7,6 @@ const { parseNaturalLanguageQuery, searchCourses } = require('../services/queryP
 
 const router = express.Router();
 
-// Configure multer for file uploads (for ingest endpoint)
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      const uploadDir = './uploads';
-      if (!fs.existsSync(uploadDir)) {
-        fs.mkdirSync(uploadDir, { recursive: true });
-      }
-      cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-      const uniqueName = `ingest_${Date.now()}_${file.originalname}`;
-      cb(null, uniqueName);
-    }
-  }),
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype === 'text/csv' || file.originalname.toLowerCase().endsWith('.csv')) {
-      cb(null, true);
-    } else {
-      cb(new Error('Only CSV files are allowed'), false);
-    }
-  },
-  limits: {
-    fileSize: 5 * 1024 * 1024 // 5MB limit
-  }
-});
 
 /**
  * GET /api/courses - Get courses with filters and pagination
